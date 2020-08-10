@@ -3,7 +3,7 @@ from tensorflow import keras
 import pandas as pd
 from tensorflow.keras.layers import Input,Dense,Activation,Dropout
 from tensorflow.keras.models import Model
-import seaborn as sns
+
 
 data=pd.read_csv("C:/Users/mingyao/Documents/GitHub/Kaggle-Titanic/train.csv")
 
