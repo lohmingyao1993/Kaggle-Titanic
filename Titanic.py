@@ -3,8 +3,9 @@ from tensorflow import keras
 import pandas as pd
 from tensorflow.keras.layers import Input,Dense,Activation,Dropout
 from tensorflow.keras.models import Model
+import seaborn as sns
 
-data=pd.read_csv("C:/Users/mingyao/Google Drive/Coursera/Projects/Titanic/train.csv")
+data=pd.read_csv("C:/Users/mingyao/Documents/GitHub/Kaggle-Titanic/train.csv")
 
 # Female=0, Male=1
 data['Sex'].replace('female',0,inplace=True)
@@ -44,16 +45,14 @@ X = normalize_age(X)
 
 
 
-
-
 y=data[['Survived']].values
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
 
 # create model
 input_layer = Input(shape=(X_train.shape[1],))
-dense_layer_1 = Dense(100, activation='sigmoid')(input_layer)
-dense_layer_2 = Dense(10, activation='sigmoid')(dense_layer_1)
+dense_layer_1 = Dense(100, activation='relu')(input_layer)
+dense_layer_2 = Dense(10, activation='relu')(dense_layer_1)
 output = Dense(y.shape[1], activation='softmax')(dense_layer_2)
 
 
